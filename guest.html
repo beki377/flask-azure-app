@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Management - Guest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <span>Server Management - Guest</span>
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+    </header>
+    <div class="content">
+        <!-- Search Bar for Filtering -->
+        <input 
+            type="text" 
+            id="search-bar" 
+            placeholder="Search by Server Name or IP" 
+            onkeyup="filterTable()" 
+        >
+        <!-- Table to Display Servers -->
+        <table>
+            <thead>
+                <tr>
+                    <th>R.No.</th>
+                    <th>Server IP</th>
+                    <th>Port Number</th>
+                    <th>Server Name</th>
+                    <th>Ping</th>
+                    <th>Telnet</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="server-list">
+                <!-- Server data will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Error Message Container -->
+<div id="error-message" role="alert" style="display: none; color: #4CAF50; font-weight: bold; margin-top: 10px;"></div>
+    <!-- Error Message Container -->
+    <div id="error-message" role="alert" style="display: none; color: red; margin-top: 10px;"></div>
+</body>
+</html>

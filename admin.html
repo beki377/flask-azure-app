@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Management - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <span>Server Management - Admin</span>
+        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+    </header>
+    <div class="content">
+        <!-- Form to Add a New Server -->
+        <form id="server-form" onsubmit="event.preventDefault(); submitServer();">
+            <input type="text" id="server-ip" placeholder="Server IP" required>
+            <input type="number" id="server-port" placeholder="Port" required>
+            <input type="text" id="server-name" placeholder="Server Name" required>
+            <button type="submit">Add Server</button>
+        </form>
+
+        <!-- Table to Display Servers -->
+        <table>
+            <thead>
+                <tr>
+                    <th>R.No.</th>
+                    <th>Server IP</th>
+                    <th>Port Number</th>
+                    <th>Server Name</th>
+                    <th>Ping</th>
+                    <th>Telnet</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="server-list">
+                <!-- Server data will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for Editing a Server -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeEditModal()">&times;</span>
+            <h2>Edit Server</h2>
+            <form id="edit-form" onsubmit="event.preventDefault(); updateServer();">
+                <input type="hidden" id="edit-server-id">
+                <input type="text" id="edit-server-ip" placeholder="Server IP" required>
+                <input type="number" id="edit-server-port" placeholder="Port" required>
+                <input type="text" id="edit-server-name" placeholder="Server Name" required>
+                <button type="submit">Update Server</button>
+            </form>
+        </div>
+    </div>
+   <!-- Error Message Container -->
+<div id="error-message" role="alert" style="display: none; color: #4CAF50; font-weight: bold; margin-top: 10px;"></div>
+    <!-- Error Message Container -->
+    <div id="error-message" role="alert" style="display: none; color: red; margin-top: 10px;"></div>
+</body>
+</html>
